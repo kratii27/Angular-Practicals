@@ -1,7 +1,14 @@
+<style>
+.sm{
+    color: green;
+}
+</style>
+<body>
 <div align="center">
     <form (submit)="signUp()">
 
         <h1>USER REGISTRATION</h1>
+        <h2 class="sm">{{form.message}}</h2>
         <table>
             <tr>
                 <th>first name</th>
@@ -23,10 +30,7 @@
                 <th>dob</th>
                 <td><input type="date" name="dob" [(ngModel)]="form.data.dob" placeholder="enter dob"></td>
             </tr>
-             <tr>
-                <th>address</th>
-                <td><input type="text" name="address" [(ngModel)]="form.data.address" placeholder="enter address"></td>
-            </tr>
+            
              <tr>
                 <th></th>
                 <td><input type="submit" value="signUp"></td>
@@ -36,3 +40,4 @@
     </form>
 
 </div>
+</body>
