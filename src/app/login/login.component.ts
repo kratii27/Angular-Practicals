@@ -42,7 +42,7 @@ export class LoginComponent {
         localStorage.setItem('firstName', res.result.data.firstName);
         localStorage.setItem('role', res.result.data.roleName);
         localStorage.setItem('id', res.result.data.id);
-        self.form.successmsg = res.result.message;
+        // self.form.successmsg = res.result.message;
         self.router.navigateByUrl('welcome');
       }
     })
