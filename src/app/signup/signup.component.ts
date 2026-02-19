@@ -15,21 +15,34 @@ export class SignupComponent {
   endpoint = 'http://localhost:8080/Auth/signUp'
 
   form: any = {
-    data:{},
-    message: ""
+    data: {},
+    errormsg: "",
+    successmsg: "",
+    inputerror: {}
   }
 
-  signUp(){
+  signUp() {
     let self = this;
-    console.log('firstName', this.form.data.firstName);
-    console.log('lastName', this.form.data.lastName);
-    console.log('login', this.form.data.login);
-    console.log('password', this.form.data.password);
-    console.log('dob', this.form.data.dob);
+    console.log('res', this.form.data);
 
-    this.httpService.post(this.endpoint, this.form.data, function (res: any){
+
+    this.httpService.post(this.endpoint, this.form.data, function (res: any) {
       console.log("response: ", res);
-      self.form.message = res.result.message;
+
+
+      if (!res.success && res.result.inputerror) {
+        self.form.inputerror = res.result.inputerror;
+      }
+
+      if (!res.success && res.result.message) {
+        self.form.errormsg = res.result.message;
+      }
+
+      if (res.success) {
+        self.form.successmsg = res.result.message;
+      }
     })
+
+
   }
 }

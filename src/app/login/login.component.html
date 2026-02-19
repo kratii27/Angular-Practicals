@@ -1,0 +1,46 @@
+<style>
+    .sm {
+        color: green;
+    }
+    .em {
+        color: red;
+    }
+    .im {
+        color: red;
+    }
+</style>
+
+<body>
+    <div align="center">
+        <form (submit)="signIn()">
+            <h1>LOGIN</h1>
+            <h3 class="sm">{{form.successmsg}}</h3>
+                <h3 class="em">{{form.errormsg}}</h3>
+                    <table>
+                        <tr>
+                            <th>Login</th>
+                            <td>
+                                <input type="text" name="login" [(ngModel)]="form.data.login"
+                                    placeholder="enter login id">
+                            </td>
+                            <td class="im">{{form.inputerror.login}}</td>
+                        </tr>
+                        <tr>
+                            <th>password</th>
+                            <td>
+                                <input type="text" name="password" [(ngModel)]="form.data.password"
+                                    placeholder="enter password">
+                            </td>
+                            <td class="im">{{form.inputerror.password}}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input type="submit" value="signIn">
+                            </td>
+                        </tr>
+                    </table>
+        </form>
+    </div>
+
+</body>
