@@ -1,0 +1,59 @@
+<style>
+.sm{
+    color: green;
+}
+.em{
+    color: red;
+}
+.im{
+    color: red;
+}
+</style>
+<body>
+<div align="center">
+    <form (submit)="save()">
+
+        <h1>ADD USER</h1>
+        <h2 class="sm">{{form.successmsg}}</h2>
+        <h2 class="em">{{form.errormsg}}</h2>
+        <table>
+            <tr>
+                <th>first name</th>
+                <td><input type="text" name="firstName" [(ngModel)]="form.data.firstName" placeholder="enter first name"></td>
+                <td class="im">{{form.inputerror.firstName}}</td>
+            </tr>
+            <tr>
+                <th>last name</th>
+                <td><input type="text" name="lastName" [(ngModel)]="form.data.lastName" placeholder="enter last name"></td>
+                <td class="im">{{form.inputerror.lastName}}</td>
+
+            </tr>
+            <tr>
+                <th>login</th>
+                <td><input type="text" name="login" [(ngModel)]="form.data.login" placeholder="enter login"></td>
+                <td class="im">{{form.inputerror.login}}</td>
+
+            </tr>
+             <tr>
+                <th>password</th>
+                <td><input type="text" name="password" [(ngModel)]="form.data.password" placeholder="enter password"></td>
+                <td class="im">{{form.inputerror.password}}</td>
+
+            </tr>
+             <tr>
+                <th>dob</th>
+                <td><input type="date" name="dob" [(ngModel)]="form.data.dob" placeholder="enter dob"></td>
+                <td class="im">{{form.inputerror.dob}}</td>
+
+            </tr>
+            
+             <tr>
+                <th></th>
+                <td><input type="submit" value="save"></td>
+            </tr>
+        </table>
+
+    </form>
+
+</div>
+</body>

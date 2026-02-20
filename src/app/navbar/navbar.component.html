@@ -13,8 +13,8 @@
 <body>
     <div *ngIf="isLogin()">
         <h3>hi, {{form.data.firstName}} ( {{form.data.roleName}} ) </h3>
-        <a href="#">Add User</a> |
-        <a href="#">User List</a> |
+        <a href="user">Add User</a> |
+        <a href="userlist">User List</a> |
         <a (click)="logout()">Logout</a>
         <img src="http://localhost:8080/User/profilePic/{{form.data.id}}" class="pic">
     </div>
