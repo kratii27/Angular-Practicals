@@ -5,6 +5,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user/user-list.component';
+import { RoleComponent } from './role/role.component';
+import { RoleListComponent } from './role/role-list.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
    {
     path: 'userlist',
     component: UserListComponent
+  },
+     {
+    path: 'role',
+    component: RoleComponent
+  },
+   {
+    path: 'rolelist',
+    component: RoleListComponent
   },
 
 ];

@@ -1,0 +1,40 @@
+<style>
+.sm{
+    color: green;
+}
+.em{
+    color: red;
+}
+.im{
+    color: red;
+}
+</style>
+<body>
+<div align="center">
+    <form (submit)="save()">
+
+        <h1>ADD USER</h1>
+        <h2 class="sm">{{form.successmsg}}</h2>
+        <h2 class="em">{{form.errormsg}}</h2>
+        <table>
+            <tr>
+                <th>name</th>
+                <td><input type="text" name="name" [(ngModel)]="form.data.name" placeholder="enter role name"></td>
+                <td class="im">{{form.inputerror.name}}</td>
+            </tr>
+            <tr>
+                <th>last name</th>
+                <td><input type="text" name="lastName" [(ngModel)]="form.data.description"  placeholder="enter last name"></td>
+                <td class="im">{{form.inputerror.description}}</td>
+
+            </tr>       
+             <tr>
+                <th></th>
+                <td><input type="submit" value="save"></td>
+            </tr>
+        </table>
+
+    </form>
+
+</div>
+</body>

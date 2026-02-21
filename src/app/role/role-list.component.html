@@ -1,0 +1,23 @@
+<table align="center">
+    <tr>
+        <th>Role name</th>
+        <td><input type="text" name="role" [(ngModel)]="form.searchParam.role"></td>
+        <td><button (click)="search()">search</button></td>
+        <td><button (click)="reset()">reset</button></td>
+    </tr>
+</table>
+<br>
+<br>
+<table align="center" border="2px" width="100%">
+    <tr align="center" style="background-color: rgb(201, 179, 240);">
+        <th>Id</th>
+        <th>Role name</th>
+        <th>description</th>
+    </tr>
+    <tr *ngFor="let user of form.list" align="center">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.description}}</td>
+    </tr>
+    
+</table>
