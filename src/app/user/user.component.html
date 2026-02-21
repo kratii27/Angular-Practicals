@@ -44,7 +44,14 @@
                 <th>dob</th>
                 <td><input type="date" name="dob" [(ngModel)]="form.data.dob" placeholder="enter dob"></td>
                 <td class="im">{{form.inputerror.dob}}</td>
-
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td><select name="roleId" [(ngModel)]="form.data.roleId" style="width: 100%;">
+                        <option [ngValue]="" value="undefined">{{'--------Select Role---------' }}</option>
+                        <option *ngFor="let obj of form.preload" [value]="obj.key">{{obj.value}}</option>
+                    </select>
+                </td>
             </tr>
             
              <tr>

@@ -13,14 +13,17 @@ export class UserListComponent {
    form: any = {
     list: [],
     pageNo: 0,
-    searchParam: {}
+    searchParam: {},
+    preload: []
   }
   endpoint = 'http://localhost:8080/User/search/' + this.form.pageNo
+  preloadep = 'http://localhost:8080/User/preload/'
 
   constructor(public httpservice: HttpServiceService){}
 
   ngOnInit(): void {
     this.search();
+    this.preload();
   }
 
   search() {
@@ -33,6 +36,14 @@ export class UserListComponent {
 
   reset() {
     location.reload()
+  }
+
+  preload(){
+    let self = this;
+    this.httpservice.get(this.preloadep, function (res: any){
+      console.log("res" + res)
+      self.form.preload = res.result.roleList;
+    })
   }
 
 }
