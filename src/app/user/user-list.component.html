@@ -1,3 +1,5 @@
+<h1 align="center">USER LIST</h1>
+<h3 align="center" class="sm">{{form.message}}</h3>
 <table align="center">
     <tr>
         <th>first name</th>
@@ -18,20 +20,31 @@
 <br>
 <table align="center" border="2px" width="100%">
     <tr align="center" style="background-color: rgb(201, 179, 240);">
+        <th>select</th>
         <th>Id</th>
+        <th>profile</th>
         <th>first name</th>
         <th>last name</th>
         <th>login</th>
         <th>role name</th>
         <th>dob</th>
+        <th>Edit</th>
     </tr>
     <tr *ngFor="let user of form.list" align="center">
+        <td align="center"><input type="checkbox" (change)="onCheckboxChange(user.id)"></td>
         <td>{{user.id}}</td>
+        <td><img height="50px" src="http://localhost:8080/User/profilePic/{{user.id}}"></td>
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.login}}</td>
         <td>{{user.roleName}}</td>
         <td>{{user.dob | date: 'yyyy-MM-dd'}}</td>
+        <td><a (click)="edit('/user/' + user.id)">Edit</a></td>
     </tr>
 
+</table>
+<table width="100%">
+        <tr>
+            <td align="center"><button (click)="delete()">delete</button></td>
+        </tr>
 </table>

@@ -56,7 +56,8 @@
             
              <tr>
                 <th></th>
-                <td><input type="submit" value="save"></td>
+                <td *ngIf="form.data.id"><input type="submit" value="update"></td>
+                <td *ngIf="!form.data.id"><input type="submit" value="save"></td>
             </tr>
         </table>
 

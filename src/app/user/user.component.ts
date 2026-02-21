@@ -11,10 +11,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserComponent {
 
-  constructor(public httpService: HttpServiceService) { }
+  constructor(public httpService: HttpServiceService, public httpClient: HttpClient, public activatedRoute: ActivatedRoute) { 
+    this.activatedRoute.params.subscribe((pathVariable: any) => {
+      this.form.data.id = pathVariable['id'];
+    })
+
+  }
 
   ngOnInit(): void {
     this.preload();
+    if (this.form.data.id && this.form.data.id > 0) {
+      this.display();
+    }
   }
 
   endpoint = 'http://localhost:8080/User/save'
@@ -57,5 +65,12 @@ export class UserComponent {
       console.log("roleList", res)
       self.form.preload = res.result.roleList;
     });
+  }
+
+  display() {
+    var self = this;
+    this.httpService.get('http://localhost:8080/User/get/' + this.form.data.id, function (res: any) {
+      self.form.data = res.result.data;
+    })
   }
 }

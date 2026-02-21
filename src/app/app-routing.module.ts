@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'rolelist',
     component: RoleListComponent
   },
+  {
+    path: 'user/:id',
+    component: UserComponent
+  }
 
 ];
 
