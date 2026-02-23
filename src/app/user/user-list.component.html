@@ -33,7 +33,8 @@
     <tr *ngFor="let user of form.list" align="center">
         <td align="center"><input type="checkbox" (change)="onCheckboxChange(user.id)"></td>
         <td>{{user.id}}</td>
-        <td><img height="50px" src="http://localhost:8080/User/profilePic/{{user.id}}"></td>
+        <td *ngIf="user.imageId"><img height="50px" src="http://localhost:8080/User/profilePic/{{user.id}}"></td>
+        <td *ngIf="!user.imageId"><img height="50px" src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"></td>
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.login}}</td>
@@ -45,6 +46,8 @@
 </table>
 <table width="100%">
         <tr>
-            <td align="center"><button (click)="delete()">delete</button></td>
+            <td><button [disabled]="form.pageNo == 0" (click)="previous()">previous</button></td>
+            <td><button (click)="delete()">delete</button></td>
+            <td align="right"><button [disabled]="form.list.length < 5" (click)="next()">next</button></td>
         </tr>
 </table>

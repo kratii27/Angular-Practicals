@@ -13,7 +13,8 @@
 <div align="center">
     <form (submit)="save()">
 
-        <h1>ADD USER</h1>
+        <h1 *ngIf="!form.data.id">ADD USER</h1>
+        <h1 *ngIf="form.data.id">UPDATE USER</h1>
         <h2 class="sm">{{form.successmsg}}</h2>
         <h2 class="em">{{form.errormsg}}</h2>
         <table>

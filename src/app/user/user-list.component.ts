@@ -19,7 +19,7 @@ export class UserListComponent {
     deleteParams: []
   }
 
-  endpoint = 'http://localhost:8080/User/search/' + this.form.pageNo
+ 
   preloadep = 'http://localhost:8080/User/preload/'
 
   constructor(public httpservice: HttpServiceService, public router:Router){}
@@ -31,7 +31,7 @@ export class UserListComponent {
 
   search() {
     let self = this;
-    this.httpservice.post(this.endpoint, this.form.searchParam, function (res: any) {
+    this.httpservice.post('http://localhost:8080/User/search/' + this.form.pageNo, this.form.searchParam, function (res: any) {
       console.log("res" + res.result.data)
       self.form.list = res.result.data;
     })
@@ -68,6 +68,18 @@ export class UserListComponent {
   edit(path: any) {
     console.log('path: ', path)
     this.router.navigateByUrl(path);
+  }
+
+  previous() {
+    this.form.pageNo--;
+    console.log(this.form.pageNo)
+    this.search();
+  }
+
+  next(){
+    this.form.pageNo++;
+    console.log(this.form.pageNo)
+    this.search();
   }
 
 }
