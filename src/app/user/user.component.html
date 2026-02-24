@@ -18,6 +18,18 @@
         <h2 class="sm">{{form.successmsg}}</h2>
         <h2 class="em">{{form.errormsg}}</h2>
         <table>
+            <tr><th></th><td><input type="hidden" name="id" [(ngModel)]="form.data.id"></td></tr>
+            <tr>
+                <th></th>
+                <td *ngIf="form.data.imageId > 0 && form.data.id > 0"><img src="http://localhost:8080/User/profilePic/{{form.data.id}}" alt="profile" class="img" align="center"></td>
+            </tr>
+            <tr *ngIf="form.data.id > 0 && form.data.imageId == null">
+                <th></th>
+                <td>
+                    <img src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80" class="img">
+                </td>
+            </tr>
+            <br>
             <tr>
                 <th>first name</th>
                 <td><input type="text" name="firstName" [(ngModel)]="form.data.firstName" placeholder="enter first name"></td>
@@ -52,6 +64,13 @@
                         <option [ngValue]="" value="undefined">{{'--------Select Role---------' }}</option>
                         <option *ngFor="let obj of form.preload" [value]="obj.key">{{obj.value}}</option>
                     </select>
+                </td>
+            </tr>
+
+             <tr>
+                <th *ngIf="form.data.id > 0">Update Image :</th>
+                <th *ngIf="form.data.id == null">Upload Image :</th>
+                <td><input type="file" name="imageId" (change)="onFileSelect($event)" accept="image/*">
                 </td>
             </tr>
             

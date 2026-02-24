@@ -36,6 +36,8 @@ export class UserComponent {
     preload: []
   }
 
+  fileToUpload: any = null;
+
 
   save() {
     let self = this;
@@ -56,6 +58,11 @@ export class UserComponent {
       if (res.success) {
         self.form.successmsg = res.result.message;
       }
+
+       if (self.fileToUpload != null) {
+        self.uploadFile();
+      }
+      
     })
   }
 
@@ -72,5 +79,18 @@ export class UserComponent {
     this.httpService.get('http://localhost:8080/User/get/' + this.form.data.id, function (res: any) {
       self.form.data = res.result.data;
     })
+  }
+
+   onFileSelect(event: any) {
+    this.fileToUpload = event.target.files.item(0);
+    console.log('file===>', this.fileToUpload);
+  }
+
+  uploadFile() {
+    const formData = new FormData();
+    formData.append('file', this.fileToUpload);
+    return this.httpService.post("http://localhost:8080/User/profilePic/" + this.form.data.id, formData, function (res: any) {
+      console.log("imageId = " + res.result.imageId);
+    });
   }
 }
