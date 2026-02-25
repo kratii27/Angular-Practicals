@@ -62,7 +62,7 @@ export class UserComponent {
        if (self.fileToUpload != null) {
         self.uploadFile();
       }
-      
+      self.display();
     })
   }
 
@@ -91,6 +91,7 @@ export class UserComponent {
     formData.append('file', this.fileToUpload);
     return this.httpService.post("http://localhost:8080/User/profilePic/" + this.form.data.id, formData, function (res: any) {
       console.log("imageId = " + res.result.imageId);
+      res.result.imageId = res.result.imageId;
     });
   }
 }
