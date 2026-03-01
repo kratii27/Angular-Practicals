@@ -16,6 +16,7 @@ export class HttpServiceService {
     }, (error) => {
       if (error.status == 401) {
         this.router.navigateByUrl('/login')
+        localStorage.clear();
       }
     })
 
@@ -27,6 +28,7 @@ export class HttpServiceService {
     }, (error) => {
       if (error.status == 401) {
         this.router.navigateByUrl('/login')
+        localStorage.clear();
       }
     })
   }

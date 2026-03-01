@@ -61,8 +61,9 @@ export class UserComponent {
 
        if (self.fileToUpload != null) {
         self.uploadFile();
+        self.display();
       }
-      self.display();
+      
     })
   }
 
@@ -74,24 +75,27 @@ export class UserComponent {
     });
   }
 
+  
+
+   onFileSelect(event: any) {
+    this.fileToUpload = event.target.files.item(0);
+    console.log('file', this.fileToUpload);
+  }
+
+  uploadFile() {
+    let self = this;
+    const formData = new FormData();
+    formData.append('file', this.fileToUpload);
+    return this.httpService.post("http://localhost:8080/User/profilePic/" + this.form.data.id, formData, function (res: any) {
+      console.log("imageId = " + res.result.imageId);
+      self.form.data.imageId = res.result.imageId;
+    });
+  }
+
   display() {
     var self = this;
     this.httpService.get('http://localhost:8080/User/get/' + this.form.data.id, function (res: any) {
       self.form.data = res.result.data;
     })
-  }
-
-   onFileSelect(event: any) {
-    this.fileToUpload = event.target.files.item(0);
-    console.log('file===>', this.fileToUpload);
-  }
-
-  uploadFile() {
-    const formData = new FormData();
-    formData.append('file', this.fileToUpload);
-    return this.httpService.post("http://localhost:8080/User/profilePic/" + this.form.data.id, formData, function (res: any) {
-      console.log("imageId = " + res.result.imageId);
-      res.result.imageId = res.result.imageId;
-    });
   }
 }

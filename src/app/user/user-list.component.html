@@ -31,7 +31,7 @@
         <th>Edit</th>
     </tr>
     <tr *ngFor="let user of form.list" align="center">
-        <td align="center"><input type="checkbox" (change)="onCheckboxChange(user.id)"></td>
+        <td align="center"><input type="checkbox" (change)="onCheckboxChange(user.id, $event)"></td>
         <td>{{user.id}}</td>
         <td *ngIf="user.imageId"><img height="50px" src="http://localhost:8080/User/profilePic/{{user.id}}" class="img"></td>
         <td *ngIf="!user.imageId"><img height="50px" src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80" class="img"></td>
